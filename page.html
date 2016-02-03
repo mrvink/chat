@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Ma super page</title>
+	<script src="https://cdn.socket.io/socket.io-1.4.5.js"></script>
+
+</head>
+<body>
+
+	<h1>Ma page de test</h1>
+	<img src="http://orig04.deviantart.net/18d7/f/2011/361/2/5/le_pays_de_la_soif_by_itomibhaa-d4kf1s8.png" alt="soif">
+
+
+	<button>message</button>
+	<p></p>
+
+	<script>
+		var socket = io();
+
+		var btn = document.getElementsByTagName('button')[0];
+		btn.addEventListener('click', function(){
+			socket.emit('msg', 'un super message !');
+		});
+
+		socket.on('confirm', function(msg){
+			document.getElementsByTagName('p')[0].innerHTML = msg;
+		});
+	</script>
+
+</body>
+</html>
